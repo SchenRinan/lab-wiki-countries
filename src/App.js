@@ -10,11 +10,13 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const [countries, setCountries] = useState([]);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     fetch('https://ih-countries-api.herokuapp.com/countries')
        .then((res) => res.json())
        .then((data) => {
+          setLoading(true)
           setCountries(data);
        })
        .catch((err) => {
@@ -29,7 +31,7 @@ function App() {
         <div className="row">
           <div className="col-5" style={{maxHeight: '90vh', overflow: 'scroll'}}>
             <div className="list-group">
-              <CountriesList countries={countries} />
+              {loading ? <CountriesList countries={countries} /> : 'Still Loading...'}
             </div>
           </div>
           <Routes>
