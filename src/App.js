@@ -8,10 +8,9 @@ import { useEffect, useState } from 'react';
 
 // import countries from './countries.json'
 
-
-
 function App() {
   const [countries, setCountries] = useState([]);
+
   useEffect(() => {
     fetch('https://ih-countries-api.herokuapp.com/countries')
        .then((res) => res.json())
@@ -36,9 +35,9 @@ function App() {
           <Routes>
             <Route path="/"/> 
             {/* Iteration 3 */}
-            {countries.map(element => <Route path={`/${element.alpha3Code}`} element={<CountryDetails country={element}/>} />)}
+            {/* {countries.map(element => <Route path={`/${element.alpha3Code}`} element={<CountryDetails country={element}/>} />)} */}
             {/* Iteration 5 */}
-            {/* {countries.map(element => <Route path={`/${element.alpha3Code}`} element={<CountryDetails country={element.alpha3Code}/>} />)} */}
+            <Route path={'/:id'} element={<CountryDetails/>} />
             <Route path="*" element={ <ErrorPage /> } />
           </Routes>
         </div>

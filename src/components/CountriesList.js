@@ -8,7 +8,7 @@ const CountriesList = props => {
         item.forEach(element =>
             result.push(
                     <Link
-                        className="list-group-item list-group-item-action"
+                        className={`list-group-item list-group-item-action`}
                         to={`/${element.alpha3Code}`} style={{textAlign: 'center'}}
                         >
                             <img
